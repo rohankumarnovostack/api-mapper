@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Mapper</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>API Mapper</h1>
+      <p class="subtitle">Track API calls from localhost:3000 to localhost:3001</p>
+    </header>
+
+    <div class="stats">
+      <div class="stat-item">
+        <span class="stat-label">Total API Calls:</span>
+        <span class="stat-value" id="totalCalls">0</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="exportBtn" class="btn btn-primary">Export to Excel</button>
+      <button id="clearBtn" class="btn btn-secondary">Clear Data</button>
+      <button id="refreshBtn" class="btn btn-secondary">Refresh</button>
+    </div>
+
+    <div class="table-container">
+      <table id="apiTable">
+        <thead>
+          <tr>
+            <th>Location (URL)</th>
+            <th>API Name</th>
+            <th>API</th>
+            <th>Method</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody id="apiTableBody">
+          <tr>
+            <td colspan="5" class="no-data">No API calls tracked yet</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

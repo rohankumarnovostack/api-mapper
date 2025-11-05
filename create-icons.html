@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Icon Generator</title>
+</head>
+<body>
+  <h2>Icon Generator for API Mapper Extension</h2>
+  <p>Open this file in a browser and it will generate the required icon files.</p>
+  <canvas id="canvas16" width="16" height="16"></canvas>
+  <canvas id="canvas48" width="48" height="48"></canvas>
+  <canvas id="canvas128" width="128" height="128"></canvas>
+  <br><br>
+  <button onclick="downloadIcons()">Download Icons</button>
+
+  <script>
+    function drawIcon(canvas) {
+      const ctx = canvas.getContext('2d');
+      const size = canvas.width;
+
+      // Background
+      ctx.fillStyle = '#0078d4';
+      ctx.fillRect(0, 0, size, size);
+
+      // White API symbol (simplified)
+      ctx.fillStyle = '#ffffff';
+      ctx.font = `bold ${size * 0.5}px Arial`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('API', size / 2, size / 2);
+    }
+
+    // Draw icons on all canvases
+    drawIcon(document.getElementById('canvas16'));
+    drawIcon(document.getElementById('canvas48'));
+    drawIcon(document.getElementById('canvas128'));
+
+    function downloadIcons() {
+      ['16', '48', '128'].forEach(size => {
+        const canvas = document.getElementById(`canvas${size}`);
+        canvas.toBlob(blob => {
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `icon${size}.png`;
+          a.click();
+          URL.revokeObjectURL(url);
+        });
+      });
+      alert('Icons downloaded! Save them in the extension folder.');
+    }
+  </script>
+</body>
+</html>

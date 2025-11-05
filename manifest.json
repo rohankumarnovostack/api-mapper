@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "API Mapper",
+  "version": "1.0.0",
+  "description": "Track API calls from localhost:3000 to localhost:3001 and export to Excel",
+  "permissions": [
+    "webRequest",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://localhost:3000/*",
+    "http://localhost:3001/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
