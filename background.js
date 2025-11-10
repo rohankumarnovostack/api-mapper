@@ -44,7 +44,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       return;
     }
 
-    if (initiator && initiator.includes('localhost:3000') && targetUrl.includes('localhost:3001')) {
+    if (initiator && initiator.includes('crm-dev.ruloans.com') && targetUrl.includes('dev-api.ruloans.com')) {
       // Get the full URL of the page that made the request
       let fullPageUrl = initiator;
 
@@ -88,7 +88,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       chrome.action.setBadgeBackgroundColor({ color: '#4CAF50' });
     }
   },
-  { urls: ["http://localhost:3001/*"] }
+  { urls: ["https://dev-api.ruloans.com/*"] }
 );
 
 // Load stored API calls on startup
